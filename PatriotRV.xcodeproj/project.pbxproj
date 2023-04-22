@@ -21,6 +21,7 @@
 		27D3D4BD29F412C9009CB4D8 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4BC29F412C9009CB4D8 /* Trip.swift */; };
 		27D3D4C029F4139C009CB4D8 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4BF29F4139C009CB4D8 /* DateExtension.swift */; };
 		27D3D4C229F41476009CB4D8 /* Publishing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4C129F41476009CB4D8 /* Publishing.swift */; };
+		27D3D4C429F41A73009CB4D8 /* MQTTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4C329F41A73009CB4D8 /* MQTTTests.swift */; };
 		82AE757510B7982D8F97FA88 /* Pods_PatriotRV_PatriotRVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD44FBE8D1698B516C2E29EE /* Pods_PatriotRV_PatriotRVUITests.framework */; };
 		878B93E44142A055B2A21C80 /* Pods_PatriotRVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D42E6DDE6BCFB655469524F /* Pods_PatriotRVTests.framework */; };
 		D153157ED0299C8D05223706 /* Pods_PatriotRV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CD7494E8CE4B4855E87BB0 /* Pods_PatriotRV.framework */; };
@@ -62,6 +63,7 @@
 		27D3D4BC29F412C9009CB4D8 /* Trip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
 		27D3D4BF29F4139C009CB4D8 /* DateExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
 		27D3D4C129F41476009CB4D8 /* Publishing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Publishing.swift; sourceTree = "<group>"; };
+		27D3D4C329F41A73009CB4D8 /* MQTTTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MQTTTests.swift; sourceTree = "<group>"; };
 		349E330295564A68F1EE9EF5 /* Pods-PatriotRVTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRVTests.release.xcconfig"; path = "Target Support Files/Pods-PatriotRVTests/Pods-PatriotRVTests.release.xcconfig"; sourceTree = "<group>"; };
 		4DD0E239D99BBA9DC9BA6D9A /* Pods-PatriotRV-PatriotRVUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRV-PatriotRVUITests.debug.xcconfig"; path = "Target Support Files/Pods-PatriotRV-PatriotRVUITests/Pods-PatriotRV-PatriotRVUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61814EE2A860D9DF4433D1CE /* Pods-PatriotRV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRV.release.xcconfig"; path = "Target Support Files/Pods-PatriotRV/Pods-PatriotRV.release.xcconfig"; sourceTree = "<group>"; };
@@ -205,6 +207,7 @@
 			isa = PBXGroup;
 			children = (
 				271954C029F40DBA00578C53 /* ViewModelTests.swift */,
+				27D3D4C329F41A73009CB4D8 /* MQTTTests.swift */,
 			);
 			path = PatriotRVTests;
 			sourceTree = "<group>";
@@ -491,6 +494,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				271954C129F40DBA00578C53 /* ViewModelTests.swift in Sources */,
+				27D3D4C429F41A73009CB4D8 /* MQTTTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

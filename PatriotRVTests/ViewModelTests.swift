@@ -28,16 +28,8 @@ final class ViewModelTests: XCTestCase {
         XCTAssertEqual(result, "1999-12-31")
     }
     
-    func test_creates_mqttManager() {
-        XCTAssertNotNil(model.mqtt)
-    }
-    
     func test_usesMockData() {
         XCTAssertTrue(model.usingMockData)
-    }
-
-    func test_mockMqttManager() {
-        XCTAssertTrue(model.mqtt is MockMQTTManager)
     }
 
 }

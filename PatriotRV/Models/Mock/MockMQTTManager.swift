@@ -23,4 +23,8 @@ class MockMQTTManager: MQTTManagerProtocol {
         publishedTopic = topic
         publishedMessage = message
     }
+    
+    func sendTestMessage(topic: String, message: String) {
+        messageHandler?(topic,message)
+    }
 }

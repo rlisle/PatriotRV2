@@ -45,7 +45,9 @@ class ViewModel: ObservableObject {
     internal let formatter = DateFormatter()
 
     var mqtt: MQTTManagerProtocol                       // Protocol to simplify unit tests
-    
+    var lastMQTTTopicReceived = "none"
+    var lastMQTTMessageReceived = "none"
+
     var usingMockData = false
     
     
@@ -96,6 +98,9 @@ class ViewModel: ObservableObject {
 extension ViewModel {
     func handleMQTTMessage(topic: String, message: String) {
         
+        lastMQTTTopicReceived = topic
+        lastMQTTMessageReceived = message
+
         // Handle Checklist messages
         // t: patriot/state/ALL/X/<checklistitem> m:<0|1>
         let lcTopic: String = topic.lowercased()
