@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct PatriotRVApp: App {
+
+    @StateObject private var viewModel = ViewModel(mqttManager: MQTTManager())
+
+
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .environmentObject(viewModel)
         }
     }
 }
