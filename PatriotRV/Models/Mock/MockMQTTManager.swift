@@ -11,7 +11,7 @@ class MockMQTTManager: MQTTManagerProtocol {
     
     var messageHandler: ((String, String) -> Void)?
 
-    var disConnect = false
+    var didConnect = false
     var publishedTopic = ""
     var publishedMessage = ""
 
