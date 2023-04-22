@@ -12,20 +12,11 @@ import CloudKit
 import PhotosUI
 import CoreTransferable
 
-//class ChecklistsModel: ObservableObject {
-//
-//}
-//
-//
-//class MaintenanceModel: ObservableObject {
-//
-//}
-
 @MainActor
 class ViewModel: ObservableObject {
     
-//    @Published var trips: TripsModel
-//
+    @Published var trips: TripsModel
+
 //    @Published var checklist: [ChecklistItem] = []
 //    @Published var maintenance: [ChecklistItem] = []
 //
@@ -61,7 +52,7 @@ class ViewModel: ObservableObject {
         usingMockData = useMockData
         mqtt = mqttManager
         formatter.dateFormat = "yyyy-MM-dd"
-//        trips = TripsModel(useMockData: usingMockData)
+        trips = TripsModel(useMockData: usingMockData)
 //        loadData()
         mqtt.messageHandler = { topic, message in
             self.handleMQTTMessage(topic: topic, message: message)
