@@ -1,0 +1,6 @@
+framework module Pods_PatriotRV {
+  umbrella header "Pods-PatriotRV-umbrella.h"
+
+  export *
+  module * { export * }
+}

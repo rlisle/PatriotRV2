@@ -1,0 +1,6 @@
+framework module Pods_PatriotRV_PatriotRVUITests {
+  umbrella header "Pods-PatriotRV-PatriotRVUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}

@@ -1,0 +1,32 @@
+PODS:
+  - CocoaAsyncSocket (7.6.6)
+  - CocoaMQTT (2.0.5):
+    - CocoaMQTT/Core (= 2.0.5)
+  - CocoaMQTT/Core (2.0.5):
+    - CocoaAsyncSocket (~> 7.6.6)
+
+DEPENDENCIES:
+  - CocoaAsyncSocket (from `https://github.com/dauerr/CocoaAsyncSocket`)
+  - CocoaMQTT (from `https://github.com/dauerr/CocoaMQTT`)
+
+EXTERNAL SOURCES:
+  CocoaAsyncSocket:
+    :git: https://github.com/dauerr/CocoaAsyncSocket
+  CocoaMQTT:
+    :git: https://github.com/dauerr/CocoaMQTT
+
+CHECKOUT OPTIONS:
+  CocoaAsyncSocket:
+    :commit: f3a5c309b1efabef293e3c0fd9419a0780985b80
+    :git: https://github.com/dauerr/CocoaAsyncSocket
+  CocoaMQTT:
+    :commit: 781b3c56de6b843cec1afe8b63fa442a89ceb869
+    :git: https://github.com/dauerr/CocoaMQTT
+
+SPEC CHECKSUMS:
+  CocoaAsyncSocket: 3e6fa069cce93f3b76267ae7527b86c642597a3f
+  CocoaMQTT: b4a75008009b67096c0a2559349eda8951d9434d
+
+PODFILE CHECKSUM: 5f6928d4d4aed4d94c3f9decac42e33c7ab8a905
+
+COCOAPODS: 1.12.0
