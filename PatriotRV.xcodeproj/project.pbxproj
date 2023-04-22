@@ -9,14 +9,13 @@
 /* Begin PBXBuildFile section */
 		271954BD29F40CE600578C53 /* MQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954BC29F40CE600578C53 /* MQTTManager.swift */; };
 		271954BF29F40D2E00578C53 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954BE29F40D2E00578C53 /* ViewModel.swift */; };
-		271954C129F40DBA00578C53 /* ModelDataTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C029F40DBA00578C53 /* ModelDataTests.swift */; };
+		271954C129F40DBA00578C53 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C029F40DBA00578C53 /* ViewModelTests.swift */; };
 		271954C729F40F7100578C53 /* MockTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C329F40E6000578C53 /* MockTrip.swift */; };
 		271954C929F40F8A00578C53 /* MockMQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C429F40E6000578C53 /* MockMQTTManager.swift */; };
 		27C981BD29F40423000B6515 /* PatriotRVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981BC29F40423000B6515 /* PatriotRVApp.swift */; };
 		27C981BF29F40423000B6515 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981BE29F40423000B6515 /* ContentView.swift */; };
 		27C981C129F40423000B6515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C981C029F40423000B6515 /* Assets.xcassets */; };
 		27C981C429F40423000B6515 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C981C329F40423000B6515 /* Preview Assets.xcassets */; };
-		27C981CE29F40424000B6515 /* PatriotRVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981CD29F40424000B6515 /* PatriotRVTests.swift */; };
 		27C981D829F40424000B6515 /* PatriotRVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981D729F40424000B6515 /* PatriotRVUITests.swift */; };
 		27C981DA29F40424000B6515 /* PatriotRVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981D929F40424000B6515 /* PatriotRVUITestsLaunchTests.swift */; };
 		27D3D4BD29F412C9009CB4D8 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4BC29F412C9009CB4D8 /* Trip.swift */; };
@@ -48,7 +47,7 @@
 		1D42E6DDE6BCFB655469524F /* Pods_PatriotRVTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PatriotRVTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		271954BC29F40CE600578C53 /* MQTTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MQTTManager.swift; sourceTree = "<group>"; };
 		271954BE29F40D2E00578C53 /* ViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
-		271954C029F40DBA00578C53 /* ModelDataTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ModelDataTests.swift; sourceTree = "<group>"; };
+		271954C029F40DBA00578C53 /* ViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		271954C329F40E6000578C53 /* MockTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTrip.swift; sourceTree = "<group>"; };
 		271954C429F40E6000578C53 /* MockMQTTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMQTTManager.swift; sourceTree = "<group>"; };
 		27C981B929F40423000B6515 /* PatriotRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatriotRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -57,7 +56,6 @@
 		27C981C029F40423000B6515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27C981C329F40423000B6515 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27C981C929F40424000B6515 /* PatriotRVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatriotRVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		27C981CD29F40424000B6515 /* PatriotRVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatriotRVTests.swift; sourceTree = "<group>"; };
 		27C981D329F40424000B6515 /* PatriotRVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatriotRVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C981D729F40424000B6515 /* PatriotRVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatriotRVUITests.swift; sourceTree = "<group>"; };
 		27C981D929F40424000B6515 /* PatriotRVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatriotRVUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -206,8 +204,7 @@
 		27C981CC29F40424000B6515 /* PatriotRVTests */ = {
 			isa = PBXGroup;
 			children = (
-				271954C029F40DBA00578C53 /* ModelDataTests.swift */,
-				27C981CD29F40424000B6515 /* PatriotRVTests.swift */,
+				271954C029F40DBA00578C53 /* ViewModelTests.swift */,
 			);
 			path = PatriotRVTests;
 			sourceTree = "<group>";
@@ -493,8 +490,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27C981CE29F40424000B6515 /* PatriotRVTests.swift in Sources */,
-				271954C129F40DBA00578C53 /* ModelDataTests.swift in Sources */,
+				271954C129F40DBA00578C53 /* ViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
