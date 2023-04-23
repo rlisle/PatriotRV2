@@ -46,7 +46,8 @@ extension TripsModel {
     }
     
     func tripRecordID(_ trip: Trip) -> CKRecord.ID {
-        return CKRecord.ID(recordName: trip.dateString())
+        let tripDateString = trip.dateString()
+        return CKRecord.ID(recordName: tripDateString)
     }
     
     nonisolated func saveTrip(_ trip: Trip) async throws {

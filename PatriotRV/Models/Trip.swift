@@ -22,9 +22,9 @@ struct Trip  {
     
     init(date: Date,
         destination: String,
-        notes: String?,
-        address: String?,
-        website: String?,
+        notes: String? = nil,
+        address: String? = nil,
+        website: String? = nil,
         photo: UIImage? = nil
     ) {
         self.date = date
@@ -62,7 +62,7 @@ struct Trip  {
     }
     
     func dateString() -> String {
-        return DateFormatter().string(from: self.date)
+        return date.mmddyy()
     }
 }
 
