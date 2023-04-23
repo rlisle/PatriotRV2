@@ -25,6 +25,8 @@
 		27D3D4C629F42370009CB4D8 /* TripsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4C529F42370009CB4D8 /* TripsTests.swift */; };
 		27D3D4C829F42430009CB4D8 /* TripsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4C729F42430009CB4D8 /* TripsModel.swift */; };
 		27D3D4CA29F4247D009CB4D8 /* TripsSeedData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4C929F4247D009CB4D8 /* TripsSeedData.swift */; };
+		27D3D4CC29F54DBD009CB4D8 /* TripsCloudKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4CB29F54DBD009CB4D8 /* TripsCloudKit.swift */; };
+		27D3D4CE29F54DF5009CB4D8 /* TripsCloudKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27D3D4CD29F54DF5009CB4D8 /* TripsCloudKitTests.swift */; };
 		82AE757510B7982D8F97FA88 /* Pods_PatriotRV_PatriotRVUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FD44FBE8D1698B516C2E29EE /* Pods_PatriotRV_PatriotRVUITests.framework */; };
 		878B93E44142A055B2A21C80 /* Pods_PatriotRVTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D42E6DDE6BCFB655469524F /* Pods_PatriotRVTests.framework */; };
 		D153157ED0299C8D05223706 /* Pods_PatriotRV.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5CD7494E8CE4B4855E87BB0 /* Pods_PatriotRV.framework */; };
@@ -70,6 +72,9 @@
 		27D3D4C529F42370009CB4D8 /* TripsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsTests.swift; sourceTree = "<group>"; };
 		27D3D4C729F42430009CB4D8 /* TripsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsModel.swift; sourceTree = "<group>"; };
 		27D3D4C929F4247D009CB4D8 /* TripsSeedData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsSeedData.swift; sourceTree = "<group>"; };
+		27D3D4CB29F54DBD009CB4D8 /* TripsCloudKit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripsCloudKit.swift; sourceTree = "<group>"; };
+		27D3D4CD29F54DF5009CB4D8 /* TripsCloudKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsCloudKitTests.swift; sourceTree = "<group>"; };
+		27D3D4CF29F56A95009CB4D8 /* PatriotRV.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PatriotRV.entitlements; sourceTree = "<group>"; };
 		349E330295564A68F1EE9EF5 /* Pods-PatriotRVTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRVTests.release.xcconfig"; path = "Target Support Files/Pods-PatriotRVTests/Pods-PatriotRVTests.release.xcconfig"; sourceTree = "<group>"; };
 		4DD0E239D99BBA9DC9BA6D9A /* Pods-PatriotRV-PatriotRVUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRV-PatriotRVUITests.debug.xcconfig"; path = "Target Support Files/Pods-PatriotRV-PatriotRVUITests/Pods-PatriotRV-PatriotRVUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		61814EE2A860D9DF4433D1CE /* Pods-PatriotRV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PatriotRV.release.xcconfig"; path = "Target Support Files/Pods-PatriotRV/Pods-PatriotRV.release.xcconfig"; sourceTree = "<group>"; };
@@ -153,6 +158,7 @@
 			children = (
 				27D3D4C129F41476009CB4D8 /* Publishing.swift */,
 				271954BC29F40CE600578C53 /* MQTTManager.swift */,
+				27D3D4CB29F54DBD009CB4D8 /* TripsCloudKit.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -191,6 +197,7 @@
 		27C981BB29F40423000B6515 /* PatriotRV */ = {
 			isa = PBXGroup;
 			children = (
+				27D3D4CF29F56A95009CB4D8 /* PatriotRV.entitlements */,
 				27D3D4BE29F4135A009CB4D8 /* Extensions */,
 				271954B829F40C3D00578C53 /* Models */,
 				271954BB29F40C7900578C53 /* Network */,
@@ -217,6 +224,7 @@
 				271954C029F40DBA00578C53 /* ViewModelTests.swift */,
 				27D3D4C329F41A73009CB4D8 /* MQTTTests.swift */,
 				27D3D4C529F42370009CB4D8 /* TripsTests.swift */,
+				27D3D4CD29F54DF5009CB4D8 /* TripsCloudKitTests.swift */,
 			);
 			path = PatriotRVTests;
 			sourceTree = "<group>";
@@ -493,6 +501,7 @@
 				27D3D4C829F42430009CB4D8 /* TripsModel.swift in Sources */,
 				271954BD29F40CE600578C53 /* MQTTManager.swift in Sources */,
 				271954BF29F40D2E00578C53 /* ViewModel.swift in Sources */,
+				27D3D4CC29F54DBD009CB4D8 /* TripsCloudKit.swift in Sources */,
 				27C981BD29F40423000B6515 /* PatriotRVApp.swift in Sources */,
 				27D3D4BD29F412C9009CB4D8 /* Trip.swift in Sources */,
 				27D3D4CA29F4247D009CB4D8 /* TripsSeedData.swift in Sources */,
@@ -507,6 +516,7 @@
 				271954C129F40DBA00578C53 /* ViewModelTests.swift in Sources */,
 				27D3D4C629F42370009CB4D8 /* TripsTests.swift in Sources */,
 				27D3D4C429F41A73009CB4D8 /* MQTTTests.swift in Sources */,
+				27D3D4CE29F54DF5009CB4D8 /* TripsCloudKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -655,6 +665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PatriotRV/PatriotRV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PatriotRV/Preview Content\"";
@@ -685,6 +696,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = PatriotRV/PatriotRV.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"PatriotRV/Preview Content\"";
