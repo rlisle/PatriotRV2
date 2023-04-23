@@ -15,7 +15,7 @@ import CoreTransferable
 @MainActor
 class ViewModel: ObservableObject {
     
-    @Published var trips: TripsModel
+    @ObservedObject var trips: TripsModel
 
 //    @Published var checklist: [ChecklistItem] = []
 //    @Published var maintenance: [ChecklistItem] = []

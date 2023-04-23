@@ -10,7 +10,6 @@ import Foundation
 class TripsModel: ObservableObject {
     
     @Published var trips: [Trip] = []
-    @Published var selectedTripIndex: Int = 0
 
     var count: Int {
         get {
@@ -19,14 +18,11 @@ class TripsModel: ObservableObject {
     }
     
     init(useMockData: Bool = false) {
-        if useMockData {
-            seedTripData()  // Should I always do this?
-        } else {
-//            setLoadingTrip()
-//            Task {
-//                try await loadTrips()
-//                //TODO: set selectedTripIndex
-//            }
+        seedTripData()
+        if !useMockData {
+            Task {
+                try await loadTrips()
+            }
         }
     }
     
@@ -36,13 +32,6 @@ class TripsModel: ObservableObject {
         return tripsAfterDate.first
     }
 
-    // Share trips to UserDefaults for use by widgets, etc.
-    func persist() {
-        if let trip = next(date: Date()) {
-            UserDefaults(suiteName: "group.net.lisles.patriotrv")!.setValue(trip.destination, forKey: "NextTrip")
-        }
-    }
-    
     func add(_ trip: Trip) {
         trips.append(trip)
     }
@@ -50,5 +39,8 @@ class TripsModel: ObservableObject {
     func update(_ trip: Trip) {
         
     }
-    
+
+    func delete(_ trip: Trip) {
+        
+    }
 }
