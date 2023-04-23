@@ -18,8 +18,18 @@ final class TripsCloudKitTests: XCTestCase {
     }
 
     func test_loadTrips() async throws {
+        // Assert 4 mock data loaded initially
+        XCTAssertEqual(model.trips.count, 4)
+        // Start with empty array of trips
+        model.trips.trips = []
+        XCTAssertEqual(model.trips.count, 0)
         try await model.trips.loadTrips()
         XCTAssert(model.trips.count > 0)
     }
+    
+    func test_saveTrip() {
+        
+    }
+    
     
 }

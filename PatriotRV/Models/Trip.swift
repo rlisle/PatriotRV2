@@ -48,6 +48,8 @@ struct Trip  {
            let url = asset.fileURL,
            let imageData = try? Data(contentsOf: url) {
             photo = UIImage(data: imageData)
+        } else {
+            photo = UIImage(systemName: "photo")
         }
         self = .init(
             date: date,
@@ -59,17 +61,9 @@ struct Trip  {
         )
     }
     
-    //TODO: may want to remove slashes, dashes, etc.
     func dateString() -> String {
         return DateFormatter().string(from: self.date)
     }
-    
-//    func isWithin2weeks(today: Date) -> Bool {
-//        guard let twoWeeksFromToday = Calendar.current.date(byAdding: .weekOfYear, value: 2, to: today) else {
-//            return false
-//        }
-//        return date <= twoWeeksFromToday
-//    }
 }
 
 extension Trip: Equatable {

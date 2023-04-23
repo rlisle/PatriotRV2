@@ -18,14 +18,26 @@ class TripsModel: ObservableObject {
     }
     
     init(useMockData: Bool = false) {
-        seedTripData()
-        if !useMockData {
+        if useMockData {
+            seedTripData()
+        } else {
+            trips = [loadingTrip()]
             Task {
                 try await loadTrips()
             }
         }
     }
-    
+
+    func loadingTrip() -> Trip {
+        Trip(
+        date: Date("01/01/23"),
+        destination: "TBD",
+        notes: "Loading trips...",
+        address: nil,
+        website: nil,
+        photo: nil)
+    }
+
     func next(date: Date? = nil) -> Trip? {
         let today = date ?? Date()
         let tripsAfterDate = trips.filter { $0.date >= today }

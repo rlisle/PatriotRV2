@@ -16,7 +16,6 @@ extension TripsModel {
             let records = try await fetchTrips()
             await MainActor.run {
                 trips = records
-                print("Trips loaded")
             }
             
         } catch {
@@ -35,18 +34,6 @@ extension TripsModel {
         let response = try await CKContainer.default().publicCloudDatabase.records(matching: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 500)
         let records = response.matchResults.compactMap { try? $0.1.get() }
         return records.compactMap(Trip.init)
-    }
-
-    func setLoadingTrip() {
-        trips = [
-            Trip(
-            date: Date("01/01/23"),
-            destination: "TBD",
-            notes: "Loading trips...",
-            address: nil,
-            website: nil,
-            photo: nil)
-        ]
     }
 
     func saveTrips() async throws {

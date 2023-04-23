@@ -14,17 +14,20 @@ final class TripsTests: XCTestCase {
     var model: ViewModel!
     
     override func setUpWithError() throws {
+        // Load model using mock (default) data
         model = ViewModel()
     }
 
-    func test_init() throws {
-        XCTAssertNotNil(model.trips)
-    }
-
-    func test_seedData_count() throws {
+    func test_mock_trips_count_is_4() throws {
         XCTAssertEqual(model.trips.count,4)
     }
 
+    func test_loadingTrip() {
+        let trip = model.trips.loadingTrip()
+        XCTAssertEqual(trip.destination, "TBD")
+        XCTAssertEqual(trip.notes, "Loading trips...")
+    }
+    
     // NEXT
     func test_next_oldest() throws {
         let oldDate = model.formatter.date(from: "2020-01-01")
