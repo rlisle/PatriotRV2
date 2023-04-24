@@ -37,11 +37,9 @@ extension TripsModel {
     }
 
     func saveTrips() async throws {
-        //TODO: delete existing trips first?
-        
         //TODO: perform this in parallel
         for trip in trips {
-            try await saveTrip(trip)
+            try await save(trip)
         }
     }
     
@@ -50,7 +48,7 @@ extension TripsModel {
         return CKRecord.ID(recordName: tripDateString)
     }
     
-    nonisolated func saveTrip(_ trip: Trip) async throws {
+    nonisolated func save(_ trip: Trip) async throws {
         guard let photo = trip.photo,
               let imageData = photo.jpegData(compressionQuality: 1.0) else {
             print("Unable to convert photo to data for saving")
@@ -58,9 +56,13 @@ extension TripsModel {
         }
         let database = CKContainer.default().publicCloudDatabase
         let record = CKRecord(recordType: "Trip") //, recordID: tripRecordID(trip))
-        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(trip.dateString() + ".jpg", conformingTo: .jpeg)
+        let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(trip.fileName(), conformingTo: .jpeg)
         do {
             try imageData.write(to: url)
+        } catch {
+            print("Error writing file to \(url.absoluteString): \(error)")
+        }
+        do {
             let asset = CKAsset(fileURL: url)
             record.setValuesForKeys([
                 "date": trip.date,
@@ -76,24 +78,23 @@ extension TripsModel {
         }
     }
     
+    // Warning - deletes all trips
     func deleteTrips() async throws {
         //TODO: perform this in parallel
         for trip in trips {
-            try await deleteTrip(trip)
+            try await delete(trip)
         }
         trips = []
     }
     
-    private nonisolated func deleteTrip(_ trip: Trip) async throws {
+    private nonisolated func delete(_ trip: Trip) async throws {
         let database = CKContainer.default().publicCloudDatabase
-        let recordName = DateFormatter().string(from: trip.date) + trip.destination
-        let recordID = CKRecord.ID(recordName: recordName)
+        let recordID = tripRecordID(trip)
         do {
-            print("Deleting record with id: \(recordName)")
+            print("Deleting record with id: \(recordID.recordName)")
             _ = try await database.deleteRecord(withID: recordID)
         } catch {
-            print("Error deleting trip \(recordName): \(error)")
+            print("Error deleting trip \(recordID.recordName): \(error)")
         }
     }
-
 }

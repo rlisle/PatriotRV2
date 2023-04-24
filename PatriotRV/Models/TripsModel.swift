@@ -44,8 +44,13 @@ class TripsModel: ObservableObject {
         return tripsAfterDate.first
     }
 
+    //Note: this does not save trips to cloud
     func add(_ trip: Trip) {
         trips.append(trip)
+    }
+    
+    func contains(trip: Trip) -> Bool {
+        return trips.contains(trip)
     }
     
     func update(_ trip: Trip) {

@@ -19,4 +19,10 @@ extension Date {
         dateFormatter.dateStyle = .short
         return dateFormatter.string(from: self)
     }
+    
+    func asFileName() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMddyy"
+        return dateFormatter.string(from: self)
+    }
 }

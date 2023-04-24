@@ -37,8 +37,28 @@ final class TripsCloudKitTests: XCTestCase {
         XCTAssertEqual(result,expected)
     }
     
-    func test_saveTrip() {
+    func test_saveTrip() async throws {
+        // Create a new test trip
+        let date = Date("11/28/21")
+        let trip = Trip(date: date,
+                        destination: "Unit Test Destination")
+
+        // Ensure it doesn't already exist in the cloud
+        try await model.trips.loadTrips()
+        XCTAssertFalse(model.trips.contains(trip: trip),
+                       "Test trip wasn't deleted correctly previously")
+
+        // Add and save it to the cloud
+        model.trips.add(trip)
+        try await model.trips.save(trip)
         
+        // Load it from the cloud
+        try await model.trips.loadTrips()
+        XCTAssert(model.trips.contains(trip: trip))
+
+        // Delete now that we're done
+        model.trips.delete(trip)
+        try await model.trips.save(trip)
     }
     
     

@@ -32,7 +32,7 @@ struct Trip  {
         self.notes = notes
         self.address = address
         self.website = website
-        self.photo = photo
+        self.photo = photo ?? UIImage(systemName: "photo")
     }
     
     init?(from record: CKRecord) {
@@ -63,6 +63,10 @@ struct Trip  {
     
     func dateString() -> String {
         return date.mmddyy()
+    }
+    
+    func fileName() -> String {
+        return "trip" + date.asFileName() + ".jpeg"
     }
 }
 
