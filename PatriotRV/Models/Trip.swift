@@ -13,14 +13,14 @@ import CloudKit
 import PhotosUI
 
 struct Trip  {
-    let date: Date
+    let date: String        // MM-dd-yy
     let destination: String
     let notes: String?
     let address: String?
     let website: String?
-    var photo: UIImage?    // JPEG data
+    var photo: UIImage?
     
-    init(date: Date,
+    init(date: String,
         destination: String,
         notes: String? = nil,
         address: String? = nil,
@@ -38,7 +38,7 @@ struct Trip  {
     init?(from record: CKRecord) {
         var photo: UIImage? = nil
         guard
-            let date = record["date"] as? Date,
+            let date = record["date"] as? String,
             let destination = record["destination"] as? String
         else { return nil }
         let notes = record["notes"] as? String
@@ -61,25 +61,21 @@ struct Trip  {
         )
     }
     
-    func dateString() -> String {
-        return date.mmddyy()
-    }
-    
+    // eg. trip02-14-23.jpeg
     func fileName() -> String {
-        return "trip" + date.asFileName() + ".jpeg"
+        return "trip" + date + ".jpeg"
     }
 }
 
+// I assume only 1 trip per day, so only comparee date
 extension Trip: Equatable {
     static func ==(lhs: Trip, rhs: Trip) -> Bool {
-        return lhs.destination == rhs.destination
-        && lhs.date == rhs.date
+        return lhs.date == rhs.date
     }
 }
 
 extension Trip: Hashable {
     func hash(into hasher: inout Hasher) {
-        hasher.combine(destination)
         hasher.combine(date)
     }
 }

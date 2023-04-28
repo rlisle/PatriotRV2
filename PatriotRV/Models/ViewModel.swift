@@ -33,31 +33,32 @@ class ViewModel: ObservableObject {
 //    internal var linePower: [Float] = [0.0, 0.0]        // Amps
 //    internal var powerActivity: Activity<PatriotRvWidgetAttributes>?
 
-    internal let formatter = DateFormatter()
-
     var mqtt: MQTTManagerProtocol                       // Protocol to simplify unit tests
     var lastMQTTTopicReceived = "none"
     var lastMQTTMessageReceived = "none"
-
-    var usingMockData = false
     
-    
-    // For use with previews and tests
-    convenience init() {
-        let mockMqttManager = MockMQTTManager()
-        self.init(mqttManager: mockMqttManager, useMockData: true)
+    // Initially use mock MQTT until startMQTT is called
+    init() {
+        print("ViewModel init")
+        mqtt = MockMQTTManager()
+        trips = TripsModel(useMockData: true)
+        print("ViewModel initted")
     }
     
-    init(mqttManager: MQTTManagerProtocol, useMockData: Bool = false) {
-        usingMockData = useMockData
+    func startMQTT(mqttManager: MQTTManagerProtocol) {
+        print("startMQTT")
         mqtt = mqttManager
-        formatter.dateFormat = "yyyy-MM-dd"
-        trips = TripsModel(useMockData: usingMockData)
-//        loadData()
         mqtt.messageHandler = { topic, message in
             self.handleMQTTMessage(topic: topic, message: message)
         }
+        
         //TODO: issue MQTT query here or later
+        
+        print("MQTT started")
+    }
+    
+    func startCloud() {
+        trips = TripsModel(useMockData: false)
     }
     
 //    func loadData() {

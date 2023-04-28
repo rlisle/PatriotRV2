@@ -21,15 +21,4 @@ final class ViewModelTests: XCTestCase {
         XCTAssertNotNil(model)
     }
     
-    func test_formatter() throws {
-        let dateString = "1999-12-31"
-        let date = model.formatter.date(from: dateString)!
-        let result = model.formatter.string(from: date)
-        XCTAssertEqual(result, "1999-12-31")
-    }
-    
-    func test_usesMockData() {
-        XCTAssertTrue(model.usingMockData)
-    }
-
 }

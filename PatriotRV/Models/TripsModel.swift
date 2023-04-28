@@ -7,6 +7,7 @@
 
 import Foundation
 
+@MainActor
 class TripsModel: ObservableObject {
     
     @Published var trips: [Trip] = []
@@ -30,7 +31,7 @@ class TripsModel: ObservableObject {
 
     func loadingTrip() -> Trip {
         Trip(
-        date: Date("01/01/23"),
+        date: "2023-01-01",
         destination: "TBD",
         notes: "Loading trips...",
         address: nil,
@@ -40,24 +41,20 @@ class TripsModel: ObservableObject {
 
     func next(date: Date? = nil) -> Trip? {
         let today = date ?? Date()
-        let tripsAfterDate = trips.filter { $0.date >= today }
+        let tripsAfterDate = trips.filter {
+            Date($0.date) >= today
+        }
         return tripsAfterDate.first
     }
 
-    //Note: this does not save trips to cloud
-    func add(_ trip: Trip) {
-        trips.append(trip)
-    }
-    
     func contains(trip: Trip) -> Bool {
-        return trips.contains(trip)
-    }
-    
-    func update(_ trip: Trip) {
-        
-    }
-
-    func delete(_ trip: Trip) {
-        
+        print("contains trip: \(trip)")
+        let result = trips.contains(trip)
+        print(" is \(result)")
+        if result == false {
+            print("trips = \(trips)")
+        }
+        //return trips.contains(trip)
+        return result
     }
 }

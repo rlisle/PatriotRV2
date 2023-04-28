@@ -12,25 +12,21 @@ import XCTest
 final class MQTTTests: XCTestCase {
 
     var model: ViewModel!
+    var mqtt: MockMQTTManager!
     
     override func setUpWithError() throws {
         model = ViewModel()
+        mqtt = MockMQTTManager()
+        model.startMQTT(mqttManager: mqtt)
     }
 
-    func test_creates_mqttManager() {
+    func test_sets_mqttManager() {
         XCTAssertNotNil(model.mqtt)
-    }
-    
-    func test_mockMqttManager() {
         XCTAssertTrue(model.mqtt is MockMQTTManager)
     }
-
+    
     func test_mqttMessageHandler_test_state_message() {
-        if let mqtt = model.mqtt as? MockMQTTManager {
-            mqtt.sendTestMessage(topic: "patriot/state/all/x/test", message: "55")
-        } else {
-            XCTFail("Error: model.mqtt is not MockMQTTManager")
-        }
+        mqtt.sendTestMessage(topic: "patriot/state/all/x/test", message: "55")
         XCTAssertEqual(model.lastMQTTTopicReceived, "patriot/state/all/x/test")
         XCTAssertEqual(model.lastMQTTMessageReceived,"55")
     }
