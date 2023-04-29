@@ -12,8 +12,22 @@
 		271954C129F40DBA00578C53 /* ViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C029F40DBA00578C53 /* ViewModelTests.swift */; };
 		271954C729F40F7100578C53 /* MockTrip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C329F40E6000578C53 /* MockTrip.swift */; };
 		271954C929F40F8A00578C53 /* MockMQTTManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 271954C429F40E6000578C53 /* MockMQTTManager.swift */; };
+		2775A7A229FD317B00C205CD /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7A129FD317B00C205CD /* HomeView.swift */; };
+		2775A7A529FD32A100C205CD /* PreviewDevices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7A429FD32A100C205CD /* PreviewDevices.swift */; };
+		2775A7A729FD32AA00C205CD /* NavigationBarModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7A629FD32AA00C205CD /* NavigationBarModifier.swift */; };
+		2775A7A929FD32B200C205CD /* HomeDestinations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7A829FD32B200C205CD /* HomeDestinations.swift */; };
+		2775A7AB29FD337400C205CD /* ImageHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7AA29FD337400C205CD /* ImageHeader.swift */; };
+		2775A7B129FD342400C205CD /* TripRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7B029FD342400C205CD /* TripRowView.swift */; };
+		2775A7B329FD342C00C205CD /* TripSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7B229FD342C00C205CD /* TripSection.swift */; };
+		2775A7B529FD365300C205CD /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7B429FD365300C205CD /* SettingsView.swift */; };
+		2775A7B729FD366000C205CD /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7B629FD366000C205CD /* LoginView.swift */; };
+		2775A7B929FD36C200C205CD /* TripListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7B829FD36C200C205CD /* TripListView.swift */; };
+		2775A7BB29FD372E00C205CD /* UnknownDestination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7BA29FD372E00C205CD /* UnknownDestination.swift */; };
+		2775A7BD29FD374C00C205CD /* TripDelete.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7BC29FD374C00C205CD /* TripDelete.swift */; };
+		2775A7BF29FD377400C205CD /* TripView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7BE29FD377400C205CD /* TripView.swift */; };
+		2775A7C129FD38A900C205CD /* MenuRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7C029FD38A900C205CD /* MenuRowView.swift */; };
+		2775A7C329FD3DC000C205CD /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2775A7C229FD3DC000C205CD /* PhotoView.swift */; };
 		27C981BD29F40423000B6515 /* PatriotRVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981BC29F40423000B6515 /* PatriotRVApp.swift */; };
-		27C981BF29F40423000B6515 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981BE29F40423000B6515 /* ContentView.swift */; };
 		27C981C129F40423000B6515 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C981C029F40423000B6515 /* Assets.xcassets */; };
 		27C981C429F40423000B6515 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27C981C329F40423000B6515 /* Preview Assets.xcassets */; };
 		27C981D829F40424000B6515 /* PatriotRVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C981D729F40424000B6515 /* PatriotRVUITests.swift */; };
@@ -56,9 +70,23 @@
 		271954C029F40DBA00578C53 /* ViewModelTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewModelTests.swift; sourceTree = "<group>"; };
 		271954C329F40E6000578C53 /* MockTrip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockTrip.swift; sourceTree = "<group>"; };
 		271954C429F40E6000578C53 /* MockMQTTManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMQTTManager.swift; sourceTree = "<group>"; };
+		2775A7A129FD317B00C205CD /* HomeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		2775A7A429FD32A100C205CD /* PreviewDevices.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreviewDevices.swift; sourceTree = "<group>"; };
+		2775A7A629FD32AA00C205CD /* NavigationBarModifier.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationBarModifier.swift; sourceTree = "<group>"; };
+		2775A7A829FD32B200C205CD /* HomeDestinations.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeDestinations.swift; sourceTree = "<group>"; };
+		2775A7AA29FD337400C205CD /* ImageHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageHeader.swift; sourceTree = "<group>"; };
+		2775A7B029FD342400C205CD /* TripRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripRowView.swift; sourceTree = "<group>"; };
+		2775A7B229FD342C00C205CD /* TripSection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripSection.swift; sourceTree = "<group>"; };
+		2775A7B429FD365300C205CD /* SettingsView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		2775A7B629FD366000C205CD /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		2775A7B829FD36C200C205CD /* TripListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripListView.swift; sourceTree = "<group>"; };
+		2775A7BA29FD372E00C205CD /* UnknownDestination.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnknownDestination.swift; sourceTree = "<group>"; };
+		2775A7BC29FD374C00C205CD /* TripDelete.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripDelete.swift; sourceTree = "<group>"; };
+		2775A7BE29FD377400C205CD /* TripView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TripView.swift; sourceTree = "<group>"; };
+		2775A7C029FD38A900C205CD /* MenuRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenuRowView.swift; sourceTree = "<group>"; };
+		2775A7C229FD3DC000C205CD /* PhotoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoView.swift; sourceTree = "<group>"; };
 		27C981B929F40423000B6515 /* PatriotRV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PatriotRV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27C981BC29F40423000B6515 /* PatriotRVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PatriotRVApp.swift; sourceTree = "<group>"; };
-		27C981BE29F40423000B6515 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		27C981C029F40423000B6515 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27C981C329F40423000B6515 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		27C981C929F40424000B6515 /* PatriotRVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PatriotRVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -141,7 +169,17 @@
 		271954B929F40C4400578C53 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				27C981BE29F40423000B6515 /* ContentView.swift */,
+				2775A7AF29FD341400C205CD /* Rows */,
+				2775A7AE29FD340400C205CD /* Sections */,
+				2775A7A129FD317B00C205CD /* HomeView.swift */,
+				2775A7AA29FD337400C205CD /* ImageHeader.swift */,
+				2775A7B629FD366000C205CD /* LoginView.swift */,
+				2775A7C229FD3DC000C205CD /* PhotoView.swift */,
+				2775A7B429FD365300C205CD /* SettingsView.swift */,
+				2775A7BC29FD374C00C205CD /* TripDelete.swift */,
+				2775A7B829FD36C200C205CD /* TripListView.swift */,
+				2775A7BE29FD377400C205CD /* TripView.swift */,
+				2775A7BA29FD372E00C205CD /* UnknownDestination.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -172,6 +210,33 @@
 			path = Mock;
 			sourceTree = "<group>";
 		};
+		2775A7A329FD327E00C205CD /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				2775A7A829FD32B200C205CD /* HomeDestinations.swift */,
+				2775A7A629FD32AA00C205CD /* NavigationBarModifier.swift */,
+				2775A7A429FD32A100C205CD /* PreviewDevices.swift */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		2775A7AE29FD340400C205CD /* Sections */ = {
+			isa = PBXGroup;
+			children = (
+				2775A7B229FD342C00C205CD /* TripSection.swift */,
+			);
+			path = Sections;
+			sourceTree = "<group>";
+		};
+		2775A7AF29FD341400C205CD /* Rows */ = {
+			isa = PBXGroup;
+			children = (
+				2775A7C029FD38A900C205CD /* MenuRowView.swift */,
+				2775A7B029FD342400C205CD /* TripRowView.swift */,
+			);
+			path = Rows;
+			sourceTree = "<group>";
+		};
 		27C981B029F40423000B6515 = {
 			isa = PBXGroup;
 			children = (
@@ -198,12 +263,13 @@
 			isa = PBXGroup;
 			children = (
 				27D3D4CF29F56A95009CB4D8 /* PatriotRV.entitlements */,
+				27C981BC29F40423000B6515 /* PatriotRVApp.swift */,
 				27D3D4BE29F4135A009CB4D8 /* Extensions */,
 				271954B829F40C3D00578C53 /* Models */,
 				271954BB29F40C7900578C53 /* Network */,
 				271954BA29F40C5000578C53 /* Resources */,
 				271954B929F40C4400578C53 /* Views */,
-				27C981BC29F40423000B6515 /* PatriotRVApp.swift */,
+				2775A7A329FD327E00C205CD /* ViewModifiers */,
 				27C981C029F40423000B6515 /* Assets.xcassets */,
 				27C981C229F40423000B6515 /* Preview Content */,
 			);
@@ -494,18 +560,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2775A7B929FD36C200C205CD /* TripListView.swift in Sources */,
+				2775A7C329FD3DC000C205CD /* PhotoView.swift in Sources */,
+				2775A7B129FD342400C205CD /* TripRowView.swift in Sources */,
+				2775A7B329FD342C00C205CD /* TripSection.swift in Sources */,
+				2775A7BF29FD377400C205CD /* TripView.swift in Sources */,
+				2775A7A529FD32A100C205CD /* PreviewDevices.swift in Sources */,
 				27D3D4C229F41476009CB4D8 /* Publishing.swift in Sources */,
+				2775A7BD29FD374C00C205CD /* TripDelete.swift in Sources */,
 				271954C729F40F7100578C53 /* MockTrip.swift in Sources */,
+				2775A7A229FD317B00C205CD /* HomeView.swift in Sources */,
 				27D3D4C029F4139C009CB4D8 /* DateExtension.swift in Sources */,
-				27C981BF29F40423000B6515 /* ContentView.swift in Sources */,
+				2775A7A729FD32AA00C205CD /* NavigationBarModifier.swift in Sources */,
+				2775A7AB29FD337400C205CD /* ImageHeader.swift in Sources */,
 				27D3D4C829F42430009CB4D8 /* TripsModel.swift in Sources */,
 				271954BD29F40CE600578C53 /* MQTTManager.swift in Sources */,
 				271954BF29F40D2E00578C53 /* ViewModel.swift in Sources */,
 				27D3D4CC29F54DBD009CB4D8 /* TripsCloudKit.swift in Sources */,
 				27C981BD29F40423000B6515 /* PatriotRVApp.swift in Sources */,
+				2775A7BB29FD372E00C205CD /* UnknownDestination.swift in Sources */,
+				2775A7C129FD38A900C205CD /* MenuRowView.swift in Sources */,
 				27D3D4BD29F412C9009CB4D8 /* Trip.swift in Sources */,
 				27D3D4CA29F4247D009CB4D8 /* TripsSeedData.swift in Sources */,
 				271954C929F40F8A00578C53 /* MockMQTTManager.swift in Sources */,
+				2775A7A929FD32B200C205CD /* HomeDestinations.swift in Sources */,
+				2775A7B729FD366000C205CD /* LoginView.swift in Sources */,
+				2775A7B529FD365300C205CD /* SettingsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

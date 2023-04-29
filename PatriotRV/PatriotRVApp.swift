@@ -10,14 +10,14 @@ import SwiftUI
 @main
 struct PatriotRVApp: App {
 
-    let performSeedData = true  // CAUTION: replaces all trip data
+    let performSeedData = false  // CAUTION: replaces all trip data
     
     // This is being run even during tests
     @StateObject private var viewModel = ViewModel()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView()
                 .environmentObject(viewModel)
                 .onAppear() {
                     viewModel.startCloud()

@@ -7,18 +7,14 @@
 
 import CloudKit
 
-//TODO: Convert Trip to CKRecord?
-
+@MainActor
 extension TripsModel {
     
     func loadTrips() async throws {
         print("load")
         do {
             let records = try await fetchTrips()
-//            await MainActor.run {
-                trips = records
-//            }
-            
+            trips = records
         } catch {
             print("Error fetching trips")
             throw error
@@ -26,7 +22,7 @@ extension TripsModel {
         print("loaded")
     }
 
-    private func fetchTrips() async throws -> [Trip] {
+    private nonisolated func fetchTrips() async throws -> [Trip] {
         print("fetch")
         let pred = NSPredicate(value: true)     // All records
         let sort = NSSortDescriptor(key: "date", ascending: false)
@@ -49,7 +45,7 @@ extension TripsModel {
         return CKRecord.ID(recordName: trip.date)
     }
     
-    func save(_ trip: Trip) async throws {
+    nonisolated func save(_ trip: Trip) async throws {
         print("save")
         guard let photo = trip.photo,
               let imageData = photo.jpegData(compressionQuality: 1.0) else {
@@ -82,13 +78,17 @@ extension TripsModel {
     }
     
     // Warning - deletes all trips
-//    func deleteTripsFromCloud() async throws {
-//        //TODO: perform this in parallel
-//        for trip in trips {
-//            try await deleteFromCloud(trip)
-//        }
-//        trips = []
-//    }
+    func deleteAll() async throws {
+        //TODO: perform this in parallel
+        for trip in trips {
+            do {
+                try await deleteFromCloud(trip)
+            } catch {
+                print("Error deleting trip \(trip)")
+            }
+        }
+        trips = []
+    }
     
     func add(_ trip: Trip) async throws {
         print("add")
@@ -116,4 +116,49 @@ extension TripsModel {
         }
         print("deleted from cloud")
     }
+    
+    
+    
+    
+    // ChatGPT code - uses completion instead of async
+//    func deleteRecord(withRecordType recordType: String,
+//                      predicate: NSPredicate,
+//                      completion: @escaping (Result<Void, Error>) -> Void) {
+//        let container = CKContainer.default()
+//        let publicDatabase = container.publicCloudDatabase
+//        
+//        let query = CKQuery(recordType: recordType, predicate: predicate)
+//        
+//        publicDatabase.perform(query, inZoneWith: nil) { (records, error) in
+//            if let error = error {
+//                DispatchQueue.main.async {
+//                    completion(.failure(error))
+//                }
+//                return
+//            }
+//            
+//            guard let records = records, !records.isEmpty else {
+//                DispatchQueue.main.async {
+//                    completion(.failure(NSError(domain: "No records found", code: -1, userInfo: nil)))
+//                }
+//                return
+//            }
+//            
+//            let recordIDsToDelete = records.map { $0.recordID }
+//            let deleteOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: recordIDsToDelete)
+//            
+//            deleteOperation.modifyRecordsCompletionBlock = { (_, deletedRecordIDs, error) in
+//                DispatchQueue.main.async {
+//                    if let error = error {
+//                        completion(.failure(error))
+//                    } else {
+//                        completion(.success(()))
+//                    }
+//                }
+//            }
+//            
+//            publicDatabase.add(deleteOperation)
+//        }
+//    }
+
 }

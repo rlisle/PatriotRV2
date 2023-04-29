@@ -20,6 +20,8 @@ struct Trip  {
     let website: String?
     var photo: UIImage?
     
+    static let recordType = "Trip"
+    
     init(date: String,
         destination: String,
         notes: String? = nil,
@@ -38,9 +40,13 @@ struct Trip  {
     init?(from record: CKRecord) {
         var photo: UIImage? = nil
         guard
+            record.recordType == Trip.recordType,
             let date = record["date"] as? String,
             let destination = record["destination"] as? String
-        else { return nil }
+        else {
+            print("Error init Trip from CKRecord")
+            return nil
+        }
         let notes = record["notes"] as? String
         let address = record["address"] as? String
         let website = record["website"] as? String
