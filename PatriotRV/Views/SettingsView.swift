@@ -21,7 +21,7 @@ struct SettingsView: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-//                Actions
+                Actions
                 Settings
                 if enableDangerZone {
                     DangerZone
@@ -35,26 +35,26 @@ struct SettingsView: View {
         .foregroundColor(.gray)
     }
 
-//    var Actions: some View {
-//        Section(header: Text("Actions")) {
+    var Actions: some View {
+        Section(header: Text("Actions")) {
 //            MenuRowView(title: "Uncheck All", iconName: "square", action: {
 //                modelData.uncheckAll()
 //                withAnimation {
 //                    presentationMode.wrappedValue.dismiss()
 //                }
 //            })
-//            // This may help debugging etc. Save s/b automatic though
-//            MenuRowView(title: "Save", iconName: "square.and.arrow.down.on.square", action: {
-//                Task {
-//                    try await modelData.save()
-//                    withAnimation {
-//                        presentationMode.wrappedValue.dismiss()
-//                    }
-//                }
-//            })
-//        }
-//        .padding(.top, 8)
-//    }
+            // This may help debugging etc. Save s/b automatic though
+            MenuRowView(title: "Save", iconName: "square.and.arrow.down.on.square", action: {
+                Task {
+                    try await modelData.trips.saveTrips()
+                    withAnimation {
+                        presentationMode.wrappedValue.dismiss()
+                    }
+                }
+            })
+        }
+        .padding(.top, 8)
+    }
     
     var Settings: some View {
         //TODO: move show/hide done to checklist view

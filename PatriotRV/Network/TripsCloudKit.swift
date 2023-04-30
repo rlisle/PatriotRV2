@@ -2,6 +2,19 @@
 //  TripsCloudKit.swift
 //  PatriotRV
 //
+//  database: iCloud.net.lisles.PatriotRV
+//  Trip records:
+//     Name: YYYY-MM-DD
+//     Address: String
+//     Date: String YYYY-MM-DD
+//     Destination: String
+//     Notes: String
+//     Photo: Asset (Binary jpeg)
+//     PhotoData
+//     Website: String
+//
+//  Note that date is used to create RecordID
+//
 //  Created by Ron Lisle on 4/5/23.
 //
 
@@ -53,7 +66,7 @@ extension TripsModel {
             return
         }
         let database = CKContainer.default().publicCloudDatabase
-        let record = CKRecord(recordType: "Trip") //, recordID: tripRecordID(trip))
+        let record = await CKRecord(recordType: "Trip", recordID: tripRecordID(trip))
         let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(trip.fileName(), conformingTo: .jpeg)
         do {
             try imageData.write(to: url)
