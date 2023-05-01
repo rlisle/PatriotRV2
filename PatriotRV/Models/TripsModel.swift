@@ -11,6 +11,17 @@ import Foundation
 class TripsModel: ObservableObject {
     
     @Published var trips: [Trip] = []
+    @Published var selectedTrip: Trip
+    var usingMockData = false
+
+    static var loadingTrip = Trip(
+        date: "2023-01-01",
+        destination: "TBD",
+        notes: "Loading trips...",
+        address: nil,
+        website: nil,
+        photo: nil
+    )
 
     var count: Int {
         get {
@@ -19,25 +30,20 @@ class TripsModel: ObservableObject {
     }
     
     init(useMockData: Bool = false) {
+        usingMockData = useMockData
+        selectedTrip = TripsModel.loadingTrip
+        trips = [selectedTrip]
         if useMockData {
             seedTripData()
         } else {
-            trips = [loadingTrip()]
             Task {
+                print("loading Trips")
                 try await loadTrips()
+                print("trips loaded")
             }
         }
     }
 
-    func loadingTrip() -> Trip {
-        Trip(
-        date: "2023-01-01",
-        destination: "TBD",
-        notes: "Loading trips...",
-        address: nil,
-        website: nil,
-        photo: nil)
-    }
 
     func next(date: Date? = nil) -> Trip? {
         let today = date ?? Date()

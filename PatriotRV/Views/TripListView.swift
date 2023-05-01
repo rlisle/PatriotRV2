@@ -39,7 +39,7 @@ struct TripListView: View {
                 ForEach(model.trips.trips, id: \.self) { trip in
 
                   NavigationLink(destination: TripView(trip: trip)) {
-                      TripRowView(trip: trip)
+                      TripRowView()
                   }
                 }
             }

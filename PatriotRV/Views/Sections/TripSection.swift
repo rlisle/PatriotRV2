@@ -16,7 +16,7 @@ struct TripSection: View {
     var body: some View {
         Section {
             NavigationLink(value: "edittrip") {
-                TripRowView(trip: model.trips.next())
+                TripRowView()
                     .swipeActions(edge: .trailing) {
                         Button(role: .destructive) {
                             //TODO: .confirmationDialog and action

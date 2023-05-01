@@ -32,6 +32,7 @@ extension TripsModel {
             print("Error fetching trips")
             throw error
         }
+        selectedTrip = next() ?? TripsModel.loadingTrip
         print("loaded")
     }
 
@@ -85,7 +86,7 @@ extension TripsModel {
             ])
             try await database.save(record)
         } catch {
-            print("Error saving trip \(record.recordID.recordName): \(error)")
+            print("Error saving trip \(record.recordID.recordName): \(error). Run app and sign into iCloud before running tests.")
         }
         print("saved")
     }

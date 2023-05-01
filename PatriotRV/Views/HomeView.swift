@@ -27,6 +27,7 @@ struct HomeView: View {
             VStack {
                 ImageHeader(imageName: "truck-rv")
                 List {
+                    let _ = print("Refreshing list")
                     TripSection(selection: $selection)
 //                    ChecklistSection(selection: $selection)
 //                    PowerSection()
@@ -34,6 +35,9 @@ struct HomeView: View {
                 }
                 .listStyle(.grouped)
                 .padding(.top, -8)
+                .refreshable {
+                    model.loadData()
+                }
             }
             .modifier(HomeDestinations(model: model))
             .navigationTitle("Patriot RV")

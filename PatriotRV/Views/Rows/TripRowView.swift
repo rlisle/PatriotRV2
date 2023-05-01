@@ -10,20 +10,14 @@ import SwiftUI
 struct TripRowView: View {
     
     @EnvironmentObject var model: ViewModel
-    let trip: Trip?
     
     var body: some View {
-        if let trip = trip {
-            VStack(alignment: .leading) {
-                HStack {
-                    Text(trip.destination)
-                    Spacer()
-                    Text(trip.date)
-                }
+        VStack(alignment: .leading) {
+            HStack {
+                Text(model.trips.selectedTrip.destination)
+                Spacer()
+                Text(model.trips.selectedTrip.date)
             }
-        } else {
-            Text("Add a New Trip")
-                .font(.headline)
         }
     }
 }
@@ -31,7 +25,7 @@ struct TripRowView: View {
 struct TripRowView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            TripRowView(trip: Mock.trip)
+            TripRowView()
                 .environmentObject(ViewModel())
         }
         .modifier(PreviewDevices())

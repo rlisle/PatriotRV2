@@ -13,7 +13,7 @@ struct PatriotRVApp: App {
     let performSeedData = false  // CAUTION: replaces all trip data
     
     // This is being run even during tests
-    @StateObject private var viewModel = ViewModel()
+    @StateObject private var viewModel = ViewModel(useMockData: false)
 
     var body: some Scene {
         WindowGroup {

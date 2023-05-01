@@ -37,11 +37,14 @@ class ViewModel: ObservableObject {
     var lastMQTTTopicReceived = "none"
     var lastMQTTMessageReceived = "none"
     
+    var usingMockData: Bool!
+    
     // Initially use mock MQTT until startMQTT is called
-    init() {
-        print("ViewModel init")
+    init(useMockData: Bool = true) {    // Tests and Previews will use mock data
+        print("ViewModel init, mockData: \(useMockData)")
+        usingMockData = useMockData
         mqtt = MockMQTTManager()
-        trips = TripsModel(useMockData: true)
+        trips = TripsModel(useMockData: usingMockData)
         print("ViewModel initted")
     }
     
@@ -58,32 +61,32 @@ class ViewModel: ObservableObject {
     }
     
     func startCloud() {
-        trips = TripsModel(useMockData: false)
+        trips = TripsModel(useMockData: usingMockData)
     }
     
-//    func loadData() {
+    func loadData() {
 //        trips.setLoadingTrip()
-//         if usingMockData {
+         if usingMockData {
 //            self.updatePower(line: 0, power: 480.0)
 //            self.updatePower(line: 1, power: 2880.0)
 //            seedChecklist()
 //            seedMaintenance()
-//        } else {
-//            Task {
-//                do {
-////                    try await loadTrips()
+        } else {
+            Task {
+                do {
+                    try await trips.loadTrips()
 //                    try await loadChecklist()
-//                    //TODO: loadMaintenance()
-//
-//                    //Start MQTT after iCloud loaded or failed
-//                    mqtt.connect()
-//
-//                } catch {
-//                    print("Error fetching from iCloud: \(error)")
-//                }
-//            }
-//        }
-//    }
+                    //TODO: loadMaintenance()
+
+                    //Start MQTT after iCloud loaded or failed
+                    mqtt.connect()
+
+                } catch {
+                    print("Error fetching from iCloud: \(error)")
+                }
+            }
+        }
+    }
 }
 
 // Handle MQTT messages
