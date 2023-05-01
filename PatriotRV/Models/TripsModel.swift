@@ -37,9 +37,7 @@ class TripsModel: ObservableObject {
             seedTripData()
         } else {
             Task {
-                print("TripsModel init loading Trips")
                 try await loadTrips()
-                print("TripsModel init trips loaded")
             }
         }
     }
@@ -54,13 +52,6 @@ class TripsModel: ObservableObject {
     }
 
     func contains(trip: Trip) -> Bool {
-        print("contains trip: \(trip)")
-        let result = trips.contains(trip)
-        print(" is \(result)")
-        if result == false {
-            print("trips = \(trips)")
-        }
-        //return trips.contains(trip)
-        return result
+        return trips.contains(trip)
     }
 }

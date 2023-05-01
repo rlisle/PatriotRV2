@@ -15,9 +15,7 @@ final class TripsCloudKitTests: XCTestCase {
     var model: ViewModel!
     
     override func setUpWithError() throws {
-        print("setUpWithError")
         model = ViewModel()
-        print("setted up")
     }
 
     func test_loadTrips() async throws {
@@ -39,11 +37,9 @@ final class TripsCloudKitTests: XCTestCase {
         XCTAssertEqual(result,expected)
     }
     
-    // Somehow this is NOT executing sequentially.
-    // Adding or deleting a trip doesn't complete before .contains
+    // Note: may need to run app and log into iCloud first
     func test_saveAndLoadTrip() async throws {
         continueAfterFailure = false
-        print("test_saveAndLoadTrip")
 
         // Create a new test trip
         let date = "11-28-21"
@@ -53,39 +49,30 @@ final class TripsCloudKitTests: XCTestCase {
         // Ensure it doesn't already exist in the cloud
         try await model.trips.loadTrips()
         if model.trips.contains(trip: trip) {
-            print("Test trip wasn't deleted correctly previously")
+            print("Test trip wasn't previously deleted. Deleting now.")
             try await model.trips.delete(trip)
-            sleep(1)
             try await model.trips.loadTrips()
-            sleep(1)
             if model.trips.contains(trip: trip) {
                 XCTFail("Failed to delete pre-existing test trip")
             }
         }
 
         // Add and save it to the cloud
-        print("About to add trip")
         try await model.trips.add(trip)
-        print("Trip added")
-
-        sleep(1)
 
         // Load it from the cloud
-        print("About to load from cloud")
-        try await model.trips.loadTrips()
-        print("Loaded from cloud")
+        // TODO: why does this require retries?
+        var loops = 0
+        repeat {
+            try await model.trips.loadTrips()
+            loops += 1
+            print("loadTrips loop \(loops)")
+        } while !model.trips.contains(trip: trip) && loops <= 10
 
-        sleep(1)
-
-        print("About to asset contains")
+        // This may take awhile, so might need ?
         XCTAssert(model.trips.contains(trip: trip))
-        print("Asserted")
 
         // Delete now that we're done
-        print("About to cleanup/delete trip")
         try await model.trips.delete(trip)
-        print("test done")
     }
-    
-    
 }
