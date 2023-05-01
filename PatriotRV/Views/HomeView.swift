@@ -36,6 +36,7 @@ struct HomeView: View {
                 .listStyle(.grouped)
                 .padding(.top, -8)
                 .refreshable {
+                    print("Pull to refresh")
                     model.loadData()
                 }
             }

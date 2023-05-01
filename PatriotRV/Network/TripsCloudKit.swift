@@ -24,7 +24,7 @@ import CloudKit
 extension TripsModel {
     
     func loadTrips() async throws {
-        print("load")
+        print("loadTrips")
         do {
             let records = try await fetchTrips()
             trips = records
@@ -32,8 +32,9 @@ extension TripsModel {
             print("Error fetching trips")
             throw error
         }
+        print("Setting selectedTrip")
         selectedTrip = next() ?? TripsModel.loadingTrip
-        print("loaded")
+        print("Tripsloaded")
     }
 
     private nonisolated func fetchTrips() async throws -> [Trip] {

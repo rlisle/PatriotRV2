@@ -37,9 +37,9 @@ class TripsModel: ObservableObject {
             seedTripData()
         } else {
             Task {
-                print("loading Trips")
+                print("TripsModel init loading Trips")
                 try await loadTrips()
-                print("trips loaded")
+                print("TripsModel init trips loaded")
             }
         }
     }

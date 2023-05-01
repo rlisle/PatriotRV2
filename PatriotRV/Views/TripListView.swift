@@ -13,7 +13,7 @@ struct TripListView: View {
 
     var body: some View {
         VStack {
-            tripsListView
+            listOfTripsView
         }
         .blackNavigation
         .toolbar {
@@ -31,7 +31,9 @@ struct TripListView: View {
         })
     }
     
-    var tripsListView: some View {
+    // This is a somewhat different way of refactoring views
+    // Using a var instead of a totally separate struct and/or file
+    var listOfTripsView: some View {
         List {
             if(model.trips.count == 0) {
                 Text("No trips found")

@@ -54,17 +54,20 @@ class ViewModel: ObservableObject {
         mqtt.messageHandler = { topic, message in
             self.handleMQTTMessage(topic: topic, message: message)
         }
-        
-        //TODO: issue MQTT query here or later
-        
+        //Start MQTT after iCloud loaded or failed
+        mqtt.connect()
+
         print("MQTT started")
     }
     
     func startCloud() {
+        print("startCloud")
         trips = TripsModel(useMockData: usingMockData)
+        print("cloud started")
     }
     
     func loadData() {
+        print("VM loadData")
 //        trips.setLoadingTrip()
          if usingMockData {
 //            self.updatePower(line: 0, power: 480.0)
@@ -74,12 +77,11 @@ class ViewModel: ObservableObject {
         } else {
             Task {
                 do {
+                    print("VM calling loadTrips")
                     try await trips.loadTrips()
 //                    try await loadChecklist()
                     //TODO: loadMaintenance()
-
-                    //Start MQTT after iCloud loaded or failed
-                    mqtt.connect()
+                    print("VM return from loadTrips")
 
                 } catch {
                     print("Error fetching from iCloud: \(error)")
@@ -102,7 +104,7 @@ extension ViewModel {
         if lcTopic.hasPrefix("patriot/state/all/x/") {
             let components = lcTopic.components(separatedBy: "/")
             if components.count > 4 {
-                let isDone = message != "0"
+//                let isDone = message != "0"
 //                self.updateDone(key: components[4], value: isDone)
             }
             
