@@ -10,13 +10,14 @@ import SwiftUI
 struct TripRowView: View {
     
     @EnvironmentObject var model: ViewModel
+    var trip: Trip
     
     var body: some View {
         VStack(alignment: .leading) {
             HStack {
-                Text(model.trips.selectedTrip.destination)
+                Text(trip.destination)
                 Spacer()
-                Text(model.trips.selectedTrip.date)
+                Text(trip.date)
             }
         }
     }
@@ -25,7 +26,7 @@ struct TripRowView: View {
 struct TripRowView_Previews: PreviewProvider {
     static var previews: some View {
         List {
-            TripRowView()
+            TripRowView(trip: Mock.trip)
                 .environmentObject(ViewModel())
         }
         .modifier(PreviewDevices())

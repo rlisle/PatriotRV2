@@ -49,7 +49,11 @@ class ViewModel: ObservableObject {
     }
     
     func startMQTT(mqttManager: MQTTManagerProtocol) {
-        print("startMQTT")
+        if mqttManager is MockMQTTManager {
+            print("startMQTT using MockMQTTManager")
+        } else {
+            print("startMQTT")
+        }
         mqtt = mqttManager
         mqtt.messageHandler = { topic, message in
             self.handleMQTTMessage(topic: topic, message: message)

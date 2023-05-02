@@ -26,8 +26,11 @@ struct TripView: View {
     @State private var photosPickerItem: PhotosPickerItem?
 
     init(trip: Trip? = nil) {
-        print("TripView init")
-        guard let trip = trip else { return }
+        guard let trip = trip else {
+            print("TripView: init trip nil")
+            return
+        }
+        print("TripView init: \(trip.date) \(trip.destination)")
         self.date = Date(trip.date)
         self.destination = trip.destination
         self.notes = trip.notes ?? ""
