@@ -11,6 +11,7 @@ import WidgetKit
 import CloudKit
 import PhotosUI
 import CoreTransferable
+import Combine
 
 @MainActor
 class ViewModel: ObservableObject {
@@ -38,40 +39,34 @@ class ViewModel: ObservableObject {
     var lastMQTTMessageReceived = "none"
     
     var usingMockData: Bool!
+    private var cancellables = Set<AnyCancellable>()
     
     // Initially use mock MQTT until startMQTT is called
     init(useMockData: Bool = true) {    // Tests and Previews will use mock data
-        print("ViewModel init, mockData: \(useMockData)")
         usingMockData = useMockData
         mqtt = MockMQTTManager()
         trips = TripsModel(useMockData: usingMockData)
-        print("ViewModel initted")
     }
     
     func startMQTT(mqttManager: MQTTManagerProtocol) {
-        if mqttManager is MockMQTTManager {
-            print("startMQTT using MockMQTTManager")
-        } else {
-            print("startMQTT")
-        }
         mqtt = mqttManager
         mqtt.messageHandler = { topic, message in
             self.handleMQTTMessage(topic: topic, message: message)
         }
         //Start MQTT after iCloud loaded or failed
         mqtt.connect()
-
-        print("MQTT started")
     }
     
     func startCloud() {
-        print("startCloud")
         trips = TripsModel(useMockData: usingMockData)
-        print("cloud started")
+        trips.objectWillChange
+            .sink { [weak self] _ in
+                self?.objectWillChange.send()   // Propogate to trips updates
+            }
+            .store(in: &cancellables)
     }
     
     func loadData() {
-        print("VM loadData")
 //        trips.setLoadingTrip()
          if usingMockData {
 //            self.updatePower(line: 0, power: 480.0)
@@ -81,11 +76,9 @@ class ViewModel: ObservableObject {
         } else {
             Task {
                 do {
-                    print("VM calling loadTrips")
                     try await trips.loadTrips()
 //                    try await loadChecklist()
                     //TODO: loadMaintenance()
-                    print("VM return from loadTrips")
 
                 } catch {
                     print("Error fetching from iCloud: \(error)")

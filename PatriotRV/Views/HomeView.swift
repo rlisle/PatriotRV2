@@ -27,7 +27,6 @@ struct HomeView: View {
             VStack {
                 ImageHeader(imageName: "truck-rv")
                 List {
-                    let _ = print("Refreshing list")
                     TripSection(selection: $selection)
 //                    ChecklistSection(selection: $selection)
 //                    PowerSection()
@@ -36,7 +35,6 @@ struct HomeView: View {
                 .listStyle(.grouped)
                 .padding(.top, -8)
                 .refreshable {
-                    print("Pull to refresh")
                     model.loadData()
                 }
             }

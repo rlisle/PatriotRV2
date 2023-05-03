@@ -50,7 +50,6 @@ class MQTTManager: MQTTManagerProtocol {
 //    }
     
     func connect() {
-        print("MQTT connect")
         clientID = getClientID()
         mqtt = CocoaMQTT(clientID: clientID, host: host, port: port)
         mqtt.delegate = self
@@ -58,20 +57,18 @@ class MQTTManager: MQTTManagerProtocol {
     }
 
     private func subscribe() {
-        print("MQTT subscribe")
         mqtt.subscribe(subscribeTopic)
         isSubscribed = true
         requestUpdates()
     }
 
     private func requestUpdates() {
-        print("MQTT requestUpdates")
         // This requests every patriot controller to send its current devices states
         publish(topic: "patriot/query", message: "All")
     }
 
     func publish(topic: String, message: String) {
-        print("MQTT publish \(topic), \(message)")
+//        print("MQTT publish \(topic), \(message)")
         mqtt.publish(topic, withString: message)
     }
 
@@ -100,12 +97,12 @@ class MQTTManager: MQTTManagerProtocol {
 extension MQTTManager: CocoaMQTTDelegate {
 
     func mqttDidDisconnect(_ mqtt: CocoaMQTT, withError err: Error?) {
-        print("MQTT didDisconnect")
+        //print("MQTT didDisconnect")
     }
     
     
     func mqtt(_ mqtt: CocoaMQTT, didConnectAck ack: CocoaMQTTConnAck) {
-        print("MQTT didConnectAck")
+        //print("MQTT didConnectAck")
         subscribe()
     }
     
@@ -125,7 +122,7 @@ extension MQTTManager: CocoaMQTTDelegate {
     }
     
     func mqtt(_ mqtt: CocoaMQTT, didSubscribeTopics success: NSDictionary, failed: [String]) {
-        print("MQTT didSubscribeTopics")
+        //print("MQTT didSubscribeTopics")
     }
     
 

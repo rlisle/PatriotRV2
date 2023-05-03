@@ -10,8 +10,11 @@ import Foundation
 @MainActor
 class TripsModel: ObservableObject {
     
+    @Published var tripsState: Bool = false
+
     @Published var trips: [Trip] = []
     @Published var selectedTrip: Trip
+    
     var usingMockData = false
 
     static var loadingTrip = Trip(

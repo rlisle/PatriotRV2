@@ -24,21 +24,20 @@ import CloudKit
 extension TripsModel {
     
     func loadTrips() async throws {
-        print("loadTrips")
         do {
             let records = try await fetchTrips()
-            trips = records
+            await MainActor.run {   // probably not necessary
+                trips = records
+                selectedTrip = next() ?? TripsModel.loadingTrip
+                tripsState = !tripsState    // toggle
+            }
         } catch {
             print("Error fetching trips")
             throw error
         }
-        print("Setting selectedTrip")
-        selectedTrip = next() ?? TripsModel.loadingTrip
-        print("Tripsloaded")
     }
 
     private nonisolated func fetchTrips() async throws -> [Trip] {
-        print("fetch")
         let pred = NSPredicate(value: true)     // All records
         let sort = NSSortDescriptor(key: "date", ascending: false)
         let query = CKQuery(recordType: "Trip", predicate: pred)
@@ -46,7 +45,6 @@ extension TripsModel {
         
         let response = try await CKContainer.default().publicCloudDatabase.records(matching: query, inZoneWith: nil, desiredKeys: nil, resultsLimit: 500)
         let records = response.matchResults.compactMap { try? $0.1.get() }
-        print("fetched")
         return records.compactMap(Trip.init)
     }
 
@@ -61,10 +59,8 @@ extension TripsModel {
     }
     
     nonisolated func save(_ trip: Trip) async throws {
-        print("save")
         guard let photo = trip.photo,
               let imageData = photo.jpegData(compressionQuality: 1.0) else {
-            print("Unable to convert photo to data for saving")
             return
         }
         let database = CKContainer.default().publicCloudDatabase
@@ -89,7 +85,6 @@ extension TripsModel {
         } catch {
             print("Error saving trip \(record.recordID.recordName): \(error). Run app and sign into iCloud before running tests.")
         }
-        print("saved")
     }
     
     // Warning - deletes all trips
@@ -106,21 +101,16 @@ extension TripsModel {
     }
     
     func add(_ trip: Trip) async throws {
-        print("add")
         trips.append(trip)
         try await save(trip)
-        print("added")
     }
 
     func delete(_ trip: Trip) async throws {
-        print("delete")
         trips.removeAll(where: { $0 == trip })
         try await deleteFromCloud(trip)
-        print("deleted")
     }
 
     private func deleteFromCloud(_ trip: Trip) async throws {
-        print("deleteFromCloud")
         let database = CKContainer.default().publicCloudDatabase
         let recordID = tripRecordID(trip)
         do {
@@ -129,7 +119,6 @@ extension TripsModel {
         } catch {
             print("Error deleting trip \(recordID.recordName): \(error)")
         }
-        print("deleted from cloud")
     }
     
     
