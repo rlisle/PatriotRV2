@@ -9,7 +9,8 @@ import Foundation
 
 class Mock {
     static let trip = Trip(
-        date: "10-31-22",
+        identifier: "2022-10-31",
+        date: "2022-10-31",
         destination: "Halloween",
         notes: "Test trip for unit tests",
         address: "1234 Test Rd, Testville, TX",
