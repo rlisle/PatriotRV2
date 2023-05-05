@@ -52,7 +52,8 @@ class TripsModel: ObservableObject {
         let tripsAfterDate = trips.filter {
             Date($0.date) >= today
         }
-        return tripsAfterDate.first
+        let sortedTripsAfterDate = tripsAfterDate.sorted(by: <)
+        return sortedTripsAfterDate.first
     }
 
     func contains(trip: Trip) -> Bool {

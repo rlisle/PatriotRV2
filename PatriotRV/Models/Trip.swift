@@ -107,3 +107,9 @@ extension Trip: Hashable {
         hasher.combine(date)
     }
 }
+
+extension Trip: Comparable {
+    static func < (lhs: Trip, rhs: Trip) -> Bool {
+        return lhs.date < rhs.date
+    }
+}

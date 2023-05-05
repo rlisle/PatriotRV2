@@ -103,11 +103,13 @@ extension TripsModel {
     func add(_ trip: Trip) async throws {
         trips.append(trip)
         try await save(trip)
+        selectedTrip = next() ?? TripsModel.loadingTrip
     }
 
     func delete(_ trip: Trip) async throws {
         trips.removeAll(where: { $0 == trip })
         try await deleteFromCloud(trip)
+        selectedTrip = next() ?? TripsModel.loadingTrip
     }
 
     private func deleteFromCloud(_ trip: Trip) async throws {
