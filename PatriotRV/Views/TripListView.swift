@@ -41,6 +41,16 @@ struct TripListView: View {
                 ForEach(model.trips.trips, id: \.self) { trip in
                   NavigationLink(destination: TripView(trip: trip)) {
                       TripRowView(trip: trip)
+                          .swipeActions(edge: .trailing) {
+                              Button(role: .destructive) {
+                                  //TODO: .confirmationDialog and action
+                                  Task {
+                                      try await model.trips.delete(trip)
+                                  }
+                              } label: {
+                                  Label("Delete", systemImage: "trash")
+                              }
+                          }
                   }
                 }
             }

@@ -17,14 +17,6 @@ struct TripSection: View {
         Section {
             NavigationLink(value: "edittrip") {
                 TripRowView(trip: model.trips.selectedTrip)
-                    .swipeActions(edge: .trailing) {
-                        Button(role: .destructive) {
-                            //TODO: .confirmationDialog and action
-                            print("TODO: delete")
-                        } label: {
-                            Label("Delete", systemImage: "trash")
-                        }
-                    }
             }
         } header: {
             HStack {

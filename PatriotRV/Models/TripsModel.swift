@@ -18,12 +18,13 @@ class TripsModel: ObservableObject {
     var usingMockData = false
 
     static var loadingTrip = Trip(
+        identifier: "2023-01-01",
         date: "2023-01-01",
         destination: "TBD",
         notes: "Loading trips...",
-        address: nil,
-        website: nil,
-        photo: nil
+        address: "123 Wherever Rd",
+        website: "https://wherever.com",
+        photo: nil  //TODO: provide a dummy photo?
     )
 
     var count: Int {

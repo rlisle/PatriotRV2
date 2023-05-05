@@ -15,6 +15,7 @@ struct TripView: View {
     @EnvironmentObject var model: ViewModel
     @Environment(\.presentationMode) var presentationMode
 
+    //TODO: switch to model.trips.selectedTrip
     @State private var date: Date = Date()
     @State private var destination: String = ""
     @State private var notes: String = ""
@@ -30,13 +31,13 @@ struct TripView: View {
             print("TripView: init trip nil")
             return
         }
-        print("TripView init: \(trip.date) \(trip.destination)")
-        self.date = Date(trip.date)
-        self.destination = trip.destination
-        self.notes = trip.notes ?? ""
-        self.address = trip.address ?? ""
-        self.website = trip.website ?? ""
-        self.photo = trip.photo
+        print("TripView init: \(trip.date) \(trip.destination) \(trip.address ?? "No address") \(String(describing: trip.notes)) \(String(describing: trip.website ?? "No website"))")
+        _date = .init(initialValue: Date(trip.date))
+        _destination = .init(initialValue: trip.destination)
+        _notes = .init(initialValue: trip.notes ?? "")
+        _address = .init(initialValue: trip.address ?? "")
+        _website = .init(initialValue: trip.website ?? "")
+        _photo = .init(initialValue: trip.photo)
     }
     
     var body: some View {
@@ -69,12 +70,14 @@ struct TripView: View {
             Section {
                 //TODO: display only if something has changed
                 Button("Save") {
-                    let newTrip = Trip(date: date.yyyymmddKey(),
-                                       destination: destination,
-                                       notes: notes,
-                                       address: address,
-                                       website: website,
-                                       photo: photo)
+                    let newTrip = Trip(
+                        identifier: date.yyyymmddKey(),
+                        date: date.yyyymmddKey(),
+                        destination: destination,
+                        notes: notes,
+                        address: address,
+                        website: website,
+                        photo: photo)
                     Task {
                         do {
                             try await model.trips.add(newTrip)
@@ -109,7 +112,7 @@ struct TripView: View {
 
 struct TripView_Previews: PreviewProvider {
     static var previews: some View {
-        TripView()
+        TripView(trip: TripsModel.loadingTrip)
             .modifier(PreviewDevices())
     }
 }
