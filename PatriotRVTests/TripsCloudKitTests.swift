@@ -30,7 +30,8 @@ final class TripsCloudKitTests: XCTestCase {
     
     func test_recordID() {
         let date = "02-02-23"
-        let trip = Trip(date: date,
+        let trip = Trip(identifier: date,
+                        date: date,
                         destination: "Test Destination")
         let result = model.trips.tripRecordID(trip)
         let expected = CKRecord.ID(recordName: date)
@@ -43,7 +44,8 @@ final class TripsCloudKitTests: XCTestCase {
 
         // Create a new test trip
         let date = "11-28-21"
-        let trip = Trip(date: date,
+        let trip = Trip(identifier: date,
+                        date: date,
                         destination: "Unit Test Destination")
 
         // Ensure it doesn't already exist in the cloud
