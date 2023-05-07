@@ -13,7 +13,7 @@ import CloudKit
 import PhotosUI
 
 struct Trip  {
-    let identifier: String
+    let identifier: String? // nil if not written to iCloud yet
     let date: String        // MM-dd-yy
     let destination: String
     let notes: String?
@@ -24,7 +24,7 @@ struct Trip  {
     
     static let recordType = "Trip"
     
-    init(identifier: String,
+    init(identifier: String?,
         date: String,
         destination: String,
         notes: String? = nil,
@@ -78,7 +78,7 @@ struct Trip  {
     }
     
     func toCKRecord() -> CKRecord {
-        let recordID = CKRecord.ID(recordName: identifier)
+        let recordID = (identifier == nil) ? CKRecord.ID() : CKRecord.ID(recordName: identifier!)
         let record = CKRecord(recordType: Trip.recordType, recordID: recordID)
         record["date"] = date as CKRecordValue
         record["destination"] = destination as CKRecordValue

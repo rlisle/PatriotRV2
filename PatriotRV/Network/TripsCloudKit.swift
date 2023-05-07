@@ -54,9 +54,9 @@ extension TripsModel {
         }
     }
     
-    func tripRecordID(_ trip: Trip) -> CKRecord.ID {
-        return CKRecord.ID(recordName: trip.date)
-    }
+//    func tripRecordID(_ trip: Trip) -> CKRecord.ID {
+//        return CKRecord.ID(recordName: trip.identifier)
+//    }
     
     nonisolated func save(_ trip: Trip) async throws {
         guard let photo = trip.photo,
@@ -64,7 +64,7 @@ extension TripsModel {
             return
         }
         let database = CKContainer.default().publicCloudDatabase
-        let record = await CKRecord(recordType: "Trip", recordID: tripRecordID(trip))
+        let record = trip.toCKRecord()
         let url = URL(fileURLWithPath: NSTemporaryDirectory()).appendingPathComponent(trip.fileName(), conformingTo: .jpeg)
         do {
             try imageData.write(to: url)
@@ -114,7 +114,7 @@ extension TripsModel {
 
     private func deleteFromCloud(_ trip: Trip) async throws {
         let database = CKContainer.default().publicCloudDatabase
-        let recordID = tripRecordID(trip)
+        let recordID = trip.toCKRecord().recordID
         do {
             print("Deleting record with id: \(recordID.recordName)")
             _ = try await database.deleteRecord(withID: recordID)
